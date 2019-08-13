@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1" id="user-details">
+            <ul>
+                <li><b>Leveranciersgegevens</b></li>
+                <li>{{ user.invoice_name }}</li>
+                <li>{{ user.address_line_1 }}</li>
+                <li>{{ user.address_line_2 }}</li>
+                <li>{{ user.phone }}</li>
+                <li>{{ user.email }}</li>
+                <li>BTW: {{ user.VAT_number }}</li>
+                <li>IBAN: {{ user.bank_account }}</li>
+            </ul>
+        </div>
+
+        <div class="col-md-5" id="customer-details">
+            <ul>
+                <li><b>Klantgegevens</b></li>
+                <li>{{ client.name }}</li>
+                <li>{{ client.address_line_1 }}</li>
+                <li>{{ client.address_line_2 }}</li>
+                <li>{{ client.VAT_number }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10"id="invoice-details">
+            <ul>
+                <li><b>Factuurgegevens</b></li>
+{#                <li>Bestelbonnummer: {{ bestelbonnummer }}</li>#}
+                <li>Factuurnummer: {{ invoice_number }}</li>
+                <li>Factuurdatum: {{ invoice_date }}</li>
+                <li>Leveringsdatum: {{ invoice_delivery_date }}</li>
+                {% if description %}
+                <li>Betreft: {{ description }}</li>
+                {%  endif %}
+            </ul>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-10">
+
+            <table width="83%">
+
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <tr>
+                    <th>Aantal (dagen)</th> <th>Eenheidsprijs</th> <th>Totaal</th> <th>BTW (21%)</th> <th>Totaal incl BTW</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>{{ nr_of_days }}</td> <td>€ {{ rate }}</td> <td>€ {{ total }}</td> <td>€ {{ vat }}</td><td>€ {{ total_vat }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <p>Gelieve binnen 30 dagen te voldoen op bovenvermeld rekeningnummer met vermelding van het factuurnummer</p>
+        </div>
+    </div>
+
+{% endblock %}

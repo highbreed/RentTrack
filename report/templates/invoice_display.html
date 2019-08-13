@@ -1,0 +1,7 @@
+
+<div class="test">
+    {% for data in invoice %}
+    <a class="data" href="{% url 'invoice:display_invoice_page' slug=data.slug %}">{{ data }} </a>
+
+    {% endfor %}
+</div>
